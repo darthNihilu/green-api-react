@@ -11,21 +11,14 @@ import {
 
 import { TextProps } from './types'
 import { COLOR_VARIANTS } from 'components/DefaultText/variants'
-import { ThemeType } from 'components/Theme'
 
 const getFontSize = ({ fontSize, small }: TextProps) => {
   if (typeof fontSize !== 'string') return
   return small ? '14px' : fontSize || '16px'
 }
-
-const variantStyles = (
-  theme: ThemeType,
-  variant: COLOR_VARIANTS = COLOR_VARIANTS.PRIMARY
-) => theme.text[variant]
-
 export const DefaultText = styled.div<TextProps & { variant?: any }>`
   font-size: ${getFontSize};
-  color: ${({ theme, variant }) => variantStyles(theme, variant)};
+  color: black;
   ${({ color }) => (color ? `color: ${color};` : '')}
   font-weight: ${({ bold }) => (bold ? 600 : 400)};
   line-height: 1.5;
